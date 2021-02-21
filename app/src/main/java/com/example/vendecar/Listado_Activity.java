@@ -16,7 +16,7 @@ import com.example.vendecar.utilidades.RellenarArrayCoches;
 
 import java.util.ArrayList;
 
-public class ListadoCoches_Activity extends AppCompatActivity {
+public class Listado_Activity extends AppCompatActivity {
 
     ArrayList<Coche> listaCoche;
     RecyclerView recyclerCoche;
@@ -35,7 +35,7 @@ public class ListadoCoches_Activity extends AppCompatActivity {
         recyclerCoche = (RecyclerView) findViewById(R.id.rcListado);
         recyclerCoche.setLayoutManager(new LinearLayoutManager(this));
 
-        //llenarCoches();
+        //Obtenemos un lista con los coches que se encuentran en la base de datos
         listaCoche=RellenarArrayCoches.llenarCoches(getApplicationContext());
 
         if(listaCoche.size()==0){
@@ -98,15 +98,15 @@ public class ListadoCoches_Activity extends AppCompatActivity {
 
         int id = item.getItemId();
         if(id== R.id.preferencias){
-          Intent miIntent = new Intent(ListadoCoches_Activity.this, Preferncias_Activity.class);
+          Intent miIntent = new Intent(Listado_Activity.this, Preferncias_Activity.class);
           startActivity(miIntent);
        }
         if(id== R.id.aniadir_coche){
-            Intent miIntent = new Intent(ListadoCoches_Activity.this, Insertar_Activity.class);
+            Intent miIntent = new Intent(Listado_Activity.this, Insertar_Activity.class);
             startActivity(miIntent);
         }
         if(id== R.id.eliminar_coche){
-            Intent miIntent = new Intent(ListadoCoches_Activity.this, Eliminar_Activity.class);
+            Intent miIntent = new Intent(Listado_Activity.this, Eliminar_Activity.class);
             startActivity(miIntent);
         }
         return super.onOptionsItemSelected(item);

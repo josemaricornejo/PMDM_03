@@ -24,7 +24,7 @@ public class Vendecar_Activity extends AppCompatActivity {
 
     public void onClick(View view) {
 
-        Intent miIntent = new Intent(Vendecar_Activity.this, ListadoCoches_Activity.class);
+        Intent miIntent = new Intent(Vendecar_Activity.this, Listado_Activity.class);
         startActivity(miIntent);
     }
 }

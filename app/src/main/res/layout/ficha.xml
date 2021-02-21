@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Ficha_Actualizar_Activity">
+    tools:context=".Ficha_Activity">
 
     <TextView
         android:id="@+id/textView"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spMarca"
+        android:id="@+id/spMarcaFicha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/etModelo"
+        android:id="@+id/etModeloFicha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -40,10 +40,10 @@
         android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spMarca" />
+        app:layout_constraintTop_toBottomOf="@+id/spMarcaFicha" />
 
     <EditText
-        android:id="@+id/etKM"
+        android:id="@+id/etKmFicha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -54,10 +54,10 @@
         android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etModelo" />
+        app:layout_constraintTop_toBottomOf="@+id/etModeloFicha" />
 
     <EditText
-        android:id="@+id/etAnio"
+        android:id="@+id/etAnioFicha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -68,10 +68,10 @@
         android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etKM" />
+        app:layout_constraintTop_toBottomOf="@+id/etKmFicha" />
 
     <EditText
-        android:id="@+id/etCC"
+        android:id="@+id/etCcFicha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -82,10 +82,10 @@
         android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etAnio" />
+        app:layout_constraintTop_toBottomOf="@+id/etAnioFicha" />
 
     <EditText
-        android:id="@+id/etCV"
+        android:id="@+id/etCvFicha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -96,10 +96,10 @@
         android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCC" />
+        app:layout_constraintTop_toBottomOf="@+id/etCcFicha" />
 
     <EditText
-        android:id="@+id/etPrecio"
+        android:id="@+id/etPrecioFicha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -110,10 +110,10 @@
         android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCV" />
+        app:layout_constraintTop_toBottomOf="@+id/etCvFicha" />
 
     <CheckBox
-        android:id="@+id/cbVendido"
+        android:id="@+id/cbVendidoFicha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -122,17 +122,18 @@
         android:text="CheckBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPrecio" />
+        app:layout_constraintTop_toBottomOf="@+id/etPrecioFicha" />
 
 
     <Button
-        android:id="@+id/btVolver"
+        android:id="@+id/btVolverFicha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:text="VOLVER"
+        android:onClick="onClickVolver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

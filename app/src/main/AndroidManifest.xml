@@ -10,11 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Insertar_Activity"></activity>
+        <activity android:name=".Ficha_Activity"></activity>
         <activity android:name=".Eliminar_Activity" />
         <activity
             android:name=".Preferncias_Activity"
             android:label="@string/title_activity_preferncias_" />
-        <activity android:name=".ListadoCoches_Activity" />
+        <activity android:name=".Listado_Activity" />
         <activity android:name=".Vendecar_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

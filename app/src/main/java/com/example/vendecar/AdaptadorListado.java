@@ -1,9 +1,11 @@
 package com.example.vendecar;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 public class AdaptadorListado extends RecyclerView.Adapter<AdaptadorListado.ViewHolderCoche> {
 
     ArrayList<Coche> listaCoche;
+    private static int idCoche;
 
     public AdaptadorListado(ArrayList<Coche> listaCoche) {
         this.listaCoche = listaCoche;
@@ -38,6 +41,25 @@ public class AdaptadorListado extends RecyclerView.Adapter<AdaptadorListado.View
         holder.tvAnio.setText(listaCoche.get(position).getAnio());
         holder.tvPrecio.setText(listaCoche.get(position).getPrecio());
 
+        //La variable debe ser final al ser referencianda desde una clase interna
+        final int id = listaCoche.get(position).getId();
+
+        //Conseguimos que al hacer click en un coche vaya a la pantalla de ficha para actualizar
+        holder.linearListado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                idCoche=id;
+
+                Intent miIntent = new Intent(v.getContext(), Ficha_Activity.class);
+                v.getContext().startActivity(miIntent);
+
+            }
+        });
+
+    }
+
+    public static int getId() {
+        return idCoche;
     }
 
     @Override
@@ -49,10 +71,12 @@ public class AdaptadorListado extends RecyclerView.Adapter<AdaptadorListado.View
 
         ImageView ivCoche;
         TextView tvMarca, tvModelo, tvKM, tvAnio, tvPrecio;
+        LinearLayout linearListado;
 
         public ViewHolderCoche(@NonNull View itemView) {
             super(itemView);
 
+            linearListado = (LinearLayout) itemView.findViewById((R.id.linearListado));
             ivCoche = (ImageView) itemView.findViewById(R.id.ivCoche);
             tvMarca = (TextView) itemView.findViewById(R.id.tvMarcaListado);
             tvModelo = (TextView) itemView.findViewById(R.id.tvModeloListado);

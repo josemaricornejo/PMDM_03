@@ -22,12 +22,11 @@ public class RellenarArrayCoches {
         //Con esta instrucción podemos leer de la base de datos
         SQLiteDatabase db = conn.getReadableDatabase();
         Coche coche = null;
-        //String[] campos={Utilidades.CAMPO_MARCA, Utilidades.CAMPO_MODELO, Utilidades.CAMPO_ANIO, Utilidades.CAMPO_KM, Utilidades.CAMPO_CC, Utilidades.CAMPO_CV, Utilidades.CAMPO_PRECIO};
+
 
         //Genereamos el cursor
         Cursor cursor = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_COCHE,null);
 
-        //Cursor cursor = db.query(Utilidades.TABLA_COCHE, campos, null, null, null, null, null);
 
         //Con el resultado de la consulta hacemos el recorrido de los datos obtenidos.
         //Con este estamos diciendo que el primer registro lo mapee en los diferentes elementos de nuestro objeto.

@@ -38,9 +38,10 @@ public class AdaptadorEliminar extends RecyclerView.Adapter<AdaptadorEliminar.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolderCoche holder, int position) {
 
+        //La variable debe ser final al ser referencianda desde una clase interna
         final int id = listaCoche.get(position).getId();
 
-
+        //Al pulsar en el checkbox recogemos el id de cada coche a través del recycler
         holder.cbEliminar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

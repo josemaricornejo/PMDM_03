@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListadoCoches_Activity"
+    tools:context=".Listado_Activity"
     android:orientation="vertical">
 
     <LinearLayout

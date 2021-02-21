@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spMarca_2"
+        android:id="@+id/spMarcaInsertar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_2" />
 
     <EditText
-        android:id="@+id/etModelo_2"
+        android:id="@+id/etModeloInsertar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -40,10 +40,10 @@
         android:hint="Modelo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spMarca_2" />
+        app:layout_constraintTop_toBottomOf="@+id/spMarcaInsertar" />
 
     <EditText
-        android:id="@+id/etKM_2"
+        android:id="@+id/etKmInsertar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -54,10 +54,10 @@
         android:hint="Kilometraje"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etModelo_2" />
+        app:layout_constraintTop_toBottomOf="@+id/etModeloInsertar" />
 
     <EditText
-        android:id="@+id/etAnio_2"
+        android:id="@+id/etAnioInsertar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -68,10 +68,10 @@
         android:hint="Año"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etKM_2" />
+        app:layout_constraintTop_toBottomOf="@+id/etKmInsertar" />
 
     <EditText
-        android:id="@+id/etCC_2"
+        android:id="@+id/etCcInsertar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -82,10 +82,10 @@
         android:hint="Cilindrada"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etAnio_2" />
+        app:layout_constraintTop_toBottomOf="@+id/etAnioInsertar" />
 
     <EditText
-        android:id="@+id/etCV_2"
+        android:id="@+id/etCvInsertar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -96,10 +96,10 @@
         android:hint="Potencia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCC_2" />
+        app:layout_constraintTop_toBottomOf="@+id/etCcInsertar" />
 
     <EditText
-        android:id="@+id/etPrecio_2"
+        android:id="@+id/etPrecioInsertar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -110,10 +110,10 @@
         android:hint="Precio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCV_2" />
+        app:layout_constraintTop_toBottomOf="@+id/etCvInsertar" />
 
     <CheckBox
-        android:id="@+id/cbVendido_2"
+        android:id="@+id/cbVendidoInsertar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -122,10 +122,10 @@
         android:text="CheckBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPrecio_2" />
+        app:layout_constraintTop_toBottomOf="@+id/etPrecioInsertar" />
 
     <Button
-        android:id="@+id/btRegistrar_2"
+        android:id="@+id/btRegistrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -135,10 +135,10 @@
         android:onClick="onClickRegistrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbVendido_2"/>
+        app:layout_constraintTop_toBottomOf="@+id/cbVendidoInsertar"/>
 
     <Button
-        android:id="@+id/btVolver_2"
+        android:id="@+id/btVolverInsertar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"

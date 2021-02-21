@@ -3,8 +3,6 @@ package com.example.vendecar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -15,17 +13,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.vendecar.entidades.Coche;
 import com.example.vendecar.utilidades.Utilidades;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class Insertar_Activity extends AppCompatActivity {
@@ -40,14 +32,14 @@ public class Insertar_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.insertar);
 
-        spMarca = (Spinner) findViewById(R.id.spMarca_2);
-        etModelo = (EditText) findViewById(R.id.etModelo_2);
-        etKM = (EditText) findViewById(R.id.etKM_2);
-        etAnio = (EditText) findViewById(R.id.etAnio_2);
-        etCC = (EditText) findViewById(R.id.etCC_2);
-        etCV = (EditText) findViewById(R.id.etCV_2);
-        etPrecio = (EditText) findViewById(R.id.etPrecio_2);
-        cbVendido = (CheckBox) findViewById(R.id.cbVendido_2);
+        spMarca = (Spinner) findViewById(R.id.spMarcaInsertar);
+        etModelo = (EditText) findViewById(R.id.etModeloInsertar);
+        etKM = (EditText) findViewById(R.id.etKmInsertar);
+        etAnio = (EditText) findViewById(R.id.etAnioInsertar);
+        etCC = (EditText) findViewById(R.id.etCcInsertar);
+        etCV = (EditText) findViewById(R.id.etCvInsertar);
+        etPrecio = (EditText) findViewById(R.id.etPrecioInsertar);
+        cbVendido = (CheckBox) findViewById(R.id.cbVendidoInsertar);
 
         //Array para almacenar la lista de marcas de coches
         ArrayList<String> marcas = new ArrayList<>();
