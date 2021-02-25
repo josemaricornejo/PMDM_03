@@ -1,15 +1,16 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory app:title="Filtros">
+    <PreferenceCategory
+        app:title="Filtrar">
 
 
         <ListPreference
+            app:key="filtro"
             app:defaultValue="reply"
             app:entries="@array/filtro_titulos"
             app:entryValues="@array/filtro_valores"
-            app:key="reply"
-            app:title="Coches"
+            app:title="Por coches vendidos"
             app:useSimpleSummaryProvider="true" />
 
 

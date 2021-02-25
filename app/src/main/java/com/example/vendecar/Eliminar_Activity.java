@@ -40,7 +40,7 @@ public class Eliminar_Activity extends AppCompatActivity {
         recyclerCoche.setLayoutManager(new LinearLayoutManager(this));
 
         //Llenamos el arraylist
-        listaCoche= RellenarArrayCoches.llenarCoches(getApplicationContext());
+        listaCoche= RellenarArrayCoches.llenarCoches(getApplicationContext(), "0");
 
         //Clase AdaptadorCoche con el arrayList pasado por parámetros al constructor
         AdaptadorEliminar adapter = new AdaptadorEliminar(listaCoche);

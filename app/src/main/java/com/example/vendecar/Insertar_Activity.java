@@ -109,10 +109,8 @@ public class Insertar_Activity extends AppCompatActivity {
 
 
         if(cbVendido.isChecked()){
-            System.out.println("valor 1");
             values.put(Utilidades.CAMPO_VENDIDO,"1".toString());
         }else{
-            System.out.println("valor 0");
             values.put(Utilidades.CAMPO_VENDIDO,"0".toString());
         }
 

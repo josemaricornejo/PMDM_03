@@ -2,10 +2,12 @@ package com.example.vendecar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +24,7 @@ public class Listado_Activity extends AppCompatActivity {
     RecyclerView recyclerCoche;
 
     ConexionSQLiteHelper conn;
+    String valor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +38,13 @@ public class Listado_Activity extends AppCompatActivity {
         recyclerCoche = (RecyclerView) findViewById(R.id.rcListado);
         recyclerCoche.setLayoutManager(new LinearLayoutManager(this));
 
+        //Obtenemos el valor seleccionado en las preferencias;
+        obtenerPreferencias();
+
         //Obtenemos un lista con los coches que se encuentran en la base de datos
-        listaCoche=RellenarArrayCoches.llenarCoches(getApplicationContext());
+        listaCoche=RellenarArrayCoches.llenarCoches(getApplicationContext(), valor);
+
+
 
         if(listaCoche.size()==0){
             Toast.makeText(this,"Debe introducir coches", Toast.LENGTH_SHORT).show();
@@ -46,46 +54,10 @@ public class Listado_Activity extends AppCompatActivity {
         //Le pasamos al RecyclerView el adaptador creado
         recyclerCoche.setAdapter(adapter);
     }
-    /*
-    private void llenarCoches() {
-        //Con esta instrucción podemos leer de la base de datos
-        SQLiteDatabase db = conn.getReadableDatabase();
-        Coche coche = null;
-        //String[] campos={Utilidades.CAMPO_MARCA, Utilidades.CAMPO_MODELO, Utilidades.CAMPO_ANIO, Utilidades.CAMPO_KM, Utilidades.CAMPO_CC, Utilidades.CAMPO_CV, Utilidades.CAMPO_PRECIO};
 
-        //Genereamos el cursor
-        Cursor cursor = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_COCHE,null);
-
-        //Cursor cursor = db.query(Utilidades.TABLA_COCHE, campos, null, null, null, null, null);
-
-        //Con el resultado de la consulta hacemos el recorrido de los datos obtenidos.
-        //Con este estamos diciendo que el primer registro lo mapee en los diferentes elementos de nuestro objeto.
-
-
-        cursor.moveToFirst();
-
-            do{
-                coche = new Coche();
-                coche.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
-                coche.setMarca(cursor.getString(cursor.getColumnIndex("marca")));
-                coche.setModelo(cursor.getString(cursor.getColumnIndex("modelo")));
-                coche.setAnio(cursor.getString(cursor.getColumnIndex("anio")));
-                coche.setKM(cursor.getString(cursor.getColumnIndex("km")));
-                coche.setCC(cursor.getString(cursor.getColumnIndex("cc")));
-                coche.setCV(cursor.getString(cursor.getColumnIndex("cv")));
-                coche.setPrecio(cursor.getString(cursor.getColumnIndex("precio")));
-                coche.setVendido(Integer.parseInt(cursor.getString(cursor.getColumnIndex("vendido"))));
-                //Guardamos el primer registro en nuestra lista coches.
-                listaCoche.add(coche);
-            }while(cursor.moveToNext());
-
-        //Cerramos el cursor
-        cursor.close();
-
-
+    public ConexionSQLiteHelper getConn() {
+        return conn;
     }
-
-     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {//Método que muestra el menú craedo en esta activity
@@ -98,8 +70,9 @@ public class Listado_Activity extends AppCompatActivity {
 
         int id = item.getItemId();
         if(id== R.id.preferencias){
-          Intent miIntent = new Intent(Listado_Activity.this, Preferncias_Activity.class);
+          Intent miIntent = new Intent(Listado_Activity.this, Preferencias_Activity.class);
           startActivity(miIntent);
+
        }
         if(id== R.id.aniadir_coche){
             Intent miIntent = new Intent(Listado_Activity.this, Insertar_Activity.class);
@@ -110,5 +83,11 @@ public class Listado_Activity extends AppCompatActivity {
             startActivity(miIntent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void obtenerPreferencias() {
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        valor = sharedPreferences.getString("filtro", "Todos los coches");
     }
 }

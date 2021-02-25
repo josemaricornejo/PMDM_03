@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 public class AdaptadorListado extends RecyclerView.Adapter<AdaptadorListado.ViewHolderCoche> {
 
+    //Ene esta lista almacenamos los objetos coche que utilizaremos en el adaptador para representarlos
     ArrayList<Coche> listaCoche;
     private static int idCoche;
 
@@ -33,6 +34,13 @@ public class AdaptadorListado extends RecyclerView.Adapter<AdaptadorListado.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderCoche holder, int position) {
+
+        if(listaCoche.get(position).getVendido()==1){
+            System.out.println("vendido");
+            holder.ivCoche.setImageResource(R.drawable.vendido);
+        }else{
+            holder.ivCoche.setImageResource(R.drawable.no_vendido);
+        }
 
         //holder.ivCoche.setImageResource(listaCoche.get(position).getFoto());
         holder.tvMarca.setText(listaCoche.get(position).getMarca());
@@ -77,7 +85,7 @@ public class AdaptadorListado extends RecyclerView.Adapter<AdaptadorListado.View
             super(itemView);
 
             linearListado = (LinearLayout) itemView.findViewById((R.id.linearListado));
-            ivCoche = (ImageView) itemView.findViewById(R.id.ivCoche);
+            ivCoche = (ImageView) itemView.findViewById(R.id.ivCocheListado);
             tvMarca = (TextView) itemView.findViewById(R.id.tvMarcaListado);
             tvModelo = (TextView) itemView.findViewById(R.id.tvModeloListado);
             tvKM = (TextView) itemView.findViewById(R.id.tvKMListado);

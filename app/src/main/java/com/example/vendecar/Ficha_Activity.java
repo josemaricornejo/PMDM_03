@@ -32,6 +32,9 @@ public class Ficha_Activity extends AppCompatActivity {
     String marca;
     ConexionSQLiteHelper conn;
 
+    //Array para almacenar la lista de marcas de coches
+    ArrayList<String> marcas = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +53,7 @@ public class Ficha_Activity extends AppCompatActivity {
         cbVendido = (CheckBox) findViewById(R.id.cbVendidoFicha);
 
 
-        //Array para almacenar la lista de marcas de coches
-        ArrayList<String> marcas = new ArrayList<>();
+
 
         //Lectura de archivo de marcas
         String archivo = "marcas.txt";
@@ -90,29 +92,42 @@ public class Ficha_Activity extends AppCompatActivity {
         });
 
         //Obtenemos el coche de la base de datos
-        obtenerCoche();
+        completarFichaCoche();
 
     }
 
-    private void obtenerCoche() {
+    private void completarFichaCoche() {
         ConexionSQLiteHelper conn = new ConexionSQLiteHelper(getApplicationContext(), "bd_coche", null, 1);
         //Con esta instrucción podemos leer de la base de datos
         SQLiteDatabase db = conn.getReadableDatabase();
         String[] parametros = {String.valueOf(AdaptadorListado.getId())};
         String[] campos = {Utilidades.CAMPO_MARCA, Utilidades.CAMPO_MODELO, Utilidades.CAMPO_ANIO, Utilidades.CAMPO_KM,
-        Utilidades.CAMPO_CC, Utilidades.CAMPO_CV, Utilidades.CAMPO_PRECIO};
+        Utilidades.CAMPO_CC, Utilidades.CAMPO_CV, Utilidades.CAMPO_PRECIO, Utilidades.CAMPO_VENDIDO};
         Coche coche = null;
 
         //Genereamos el cursor
         Cursor cursor = db.query(Utilidades.TABLA_COCHE, campos, Utilidades.CAMPO_ID+"=?",parametros,null,null,null);
         cursor.moveToFirst();
 
+        //Obtenemos la marca de la base de datos
+        String marcaSeleccionada = cursor.getString(cursor.getColumnIndex("marca"));
+        //Obtenemos el indice en el array de marcas asociado a la marca
+        int posicionSeleccionada = marcas.indexOf(marcaSeleccionada);
+
+        //Establecemos la marca en el spinner
+        spMarca.setSelection(posicionSeleccionada);
         etModelo.setText(cursor.getString(cursor.getColumnIndex("modelo")));
         etAnio.setText(cursor.getString(cursor.getColumnIndex("anio")));
         etKM.setText(cursor.getString(cursor.getColumnIndex("km")));
         etCC.setText(cursor.getString(cursor.getColumnIndex("cc")));
         etCV.setText(cursor.getString(cursor.getColumnIndex("cv")));
         etPrecio.setText(cursor.getString(cursor.getColumnIndex("precio")));
+        if(cursor.getString(cursor.getColumnIndex("vendido")).equals("1")){
+            cbVendido.setChecked(true);
+        }else{
+            cbVendido.setChecked(false);
+        }
+
 
         cursor.close();
 
