@@ -15,6 +15,10 @@ import com.example.vendecar.entidades.Coche;
 
 import java.util.ArrayList;
 
+/*
+    La clase adapatador es como la clase Activity que gestion los elementos del recycler
+ */
+
 public class AdaptadorListado extends RecyclerView.Adapter<AdaptadorListado.ViewHolderCoche> {
 
     //Ene esta lista almacenamos los objetos coche que utilizaremos en el adaptador para representarlos
@@ -42,7 +46,6 @@ public class AdaptadorListado extends RecyclerView.Adapter<AdaptadorListado.View
             holder.ivCoche.setImageResource(R.drawable.no_vendido);
         }
 
-        //holder.ivCoche.setImageResource(listaCoche.get(position).getFoto());
         holder.tvMarca.setText(listaCoche.get(position).getMarca());
         holder.tvModelo.setText(listaCoche.get(position).getModelo());
         holder.tvKM.setText(listaCoche.get(position).getKM());

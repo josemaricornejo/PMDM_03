@@ -3,6 +3,7 @@ package com.example.vendecar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -42,7 +43,11 @@ public class Insertar_Activity extends AppCompatActivity {
         cbVendido = (CheckBox) findViewById(R.id.cbVendidoInsertar);
 
         //Array para almacenar la lista de marcas de coches
-        ArrayList<String> marcas = new ArrayList<>();
+        //ArrayList<String> marcas = new ArrayList<>();
+
+        String[] marcas = getResources().getStringArray(R.array.marcas);
+
+        /*
 
         //Lectura de archivo de marcas
         String archivo = "marcas.txt";
@@ -57,13 +62,16 @@ public class Insertar_Activity extends AppCompatActivity {
         StringBuilder stringBuilder = new StringBuilder();
         while((lineaTexto=bufferedReader.readLine())!=null){
             marcas.add(lineaTexto);
-            //System.out.println(lineaTexto);
+            System.out.println(lineaTexto);
         }
 
         }catch (Exception e){
             e.printStackTrace();
         }
 
+         */
+
+        //Creamos el adaptador que pasaremos la Spinner con las marcas
         ArrayAdapter<CharSequence> adapter= new ArrayAdapter(this, android.R.layout.simple_spinner_item, marcas);
 
         spMarca.setAdapter(adapter);
@@ -92,9 +100,6 @@ public class Insertar_Activity extends AppCompatActivity {
 
         //Abro la base de datos para poder editarla
         SQLiteDatabase db=conn.getWritableDatabase();
-
-        //conn.onUpgrade(db,1,2);
-
 
         //Android proporciona ContentValue que es un forma rápida de hacer los registros similar a como se utilizan los HashMap con una clave y valor asociados.
         ContentValues values = new ContentValues();
@@ -126,8 +131,26 @@ public class Insertar_Activity extends AppCompatActivity {
 
     }
 
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent miIntent = new Intent(Insertar_Activity.this, Listado_Activity.class);
+        startActivity(miIntent);
+        finish();
+    }
+
+
+
     public void onClickRegistrar(View view) {
         registrarCoche();
 
+    }
+
+    public void onClickVolver(View view) {
+        Intent miIntent = new Intent(Insertar_Activity.this, Listado_Activity.class);
+        startActivity(miIntent);
     }
 }

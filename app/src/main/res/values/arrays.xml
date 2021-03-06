@@ -11,5 +11,25 @@
         <item>1</item>
     </string-array>
 
+    <string-array name="marcas">
+        <item>Abarth</item>
+        <item>Alfa Romeo</item>
+        <item>Aro</item>
+        <item>Asia</item>
+        <item>Asia Motors</item>
+        <item>Audi</item>
+        <item>Austin</item>
+        <item>Bmw</item>
+        <item>Cadillac</item>
+        <item>Dacia</item>
+        <item>Dodge</item>
+        <item>Gmc</item>
+        <item>Hummer</item>
+        <item>Iveco</item>
+        <item>Jaguar</item>
+        <item>Kia</item>
+        <item>Lamborgini</item>
+    </string-array>
+
 
 </resources>

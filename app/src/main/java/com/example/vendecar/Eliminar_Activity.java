@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -47,6 +48,17 @@ public class Eliminar_Activity extends AppCompatActivity {
         //Le pasamos al RecyclerView el adaptador creado
         recyclerCoche.setAdapter(adapter);
 
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent miIntent = new Intent(Eliminar_Activity.this, Listado_Activity.class);
+        startActivity(miIntent);
+        finish();
     }
 
 

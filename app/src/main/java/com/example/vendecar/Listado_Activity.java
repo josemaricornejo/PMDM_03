@@ -38,7 +38,7 @@ public class Listado_Activity extends AppCompatActivity {
         recyclerCoche = (RecyclerView) findViewById(R.id.rcListado);
         recyclerCoche.setLayoutManager(new LinearLayoutManager(this));
 
-        //Obtenemos el valor seleccionado en las preferencias;
+        //Obtenemos el valor seleccionado en las preferencias en la variable global "valor" que se la pasamos por parámetro al siguiente método
         obtenerPreferencias();
 
         //Obtenemos un lista con los coches que se encuentran en la base de datos
@@ -48,11 +48,14 @@ public class Listado_Activity extends AppCompatActivity {
 
         if(listaCoche.size()==0){
             Toast.makeText(this,"Debe introducir coches", Toast.LENGTH_SHORT).show();
+        }else{
+            //Clase AdaptadorCoche con el arrayList pasado por parámetros al constructor
+            AdaptadorListado adapter = new AdaptadorListado(listaCoche);
+            //Le pasamos al RecyclerView el adaptador creado
+            recyclerCoche.setAdapter(adapter);
+
         }
-        //Clase AdaptadorCoche con el arrayList pasado por parámetros al constructor
-        AdaptadorListado adapter = new AdaptadorListado(listaCoche);
-        //Le pasamos al RecyclerView el adaptador creado
-        recyclerCoche.setAdapter(adapter);
+
     }
 
     public ConexionSQLiteHelper getConn() {
@@ -65,6 +68,8 @@ public class Listado_Activity extends AppCompatActivity {
         return true;
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
@@ -72,15 +77,17 @@ public class Listado_Activity extends AppCompatActivity {
         if(id== R.id.preferencias){
           Intent miIntent = new Intent(Listado_Activity.this, Preferencias_Activity.class);
           startActivity(miIntent);
-
+          finish();
        }
         if(id== R.id.aniadir_coche){
             Intent miIntent = new Intent(Listado_Activity.this, Insertar_Activity.class);
             startActivity(miIntent);
+            finish();
         }
         if(id== R.id.eliminar_coche){
             Intent miIntent = new Intent(Listado_Activity.this, Eliminar_Activity.class);
             startActivity(miIntent);
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -88,6 +95,6 @@ public class Listado_Activity extends AppCompatActivity {
     private void obtenerPreferencias() {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        valor = sharedPreferences.getString("filtro", "Todos los coches");
+        valor = sharedPreferences.getString("filtro", "0");
     }
 }

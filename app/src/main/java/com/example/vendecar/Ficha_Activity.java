@@ -52,7 +52,7 @@ public class Ficha_Activity extends AppCompatActivity {
         etPrecio = (EditText) findViewById(R.id.etPrecioFicha);
         cbVendido = (CheckBox) findViewById(R.id.cbVendidoFicha);
 
-
+        /*
 
 
         //Lectura de archivo de marcas
@@ -74,6 +74,12 @@ public class Ficha_Activity extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
+
+         */
+
+        String[] marcas = getResources().getStringArray(R.array.marcas);
+
+
 
         ArrayAdapter<CharSequence> adapter= new ArrayAdapter(this, android.R.layout.simple_spinner_item, marcas);
 
@@ -114,7 +120,7 @@ public class Ficha_Activity extends AppCompatActivity {
         //Obtenemos el indice en el array de marcas asociado a la marca
         int posicionSeleccionada = marcas.indexOf(marcaSeleccionada);
 
-        //Establecemos la marca en el spinner
+        //Establecemos los campos de la ficha con los valores de la base de datos
         spMarca.setSelection(posicionSeleccionada);
         etModelo.setText(cursor.getString(cursor.getColumnIndex("modelo")));
         etAnio.setText(cursor.getString(cursor.getColumnIndex("anio")));
@@ -136,38 +142,6 @@ public class Ficha_Activity extends AppCompatActivity {
     }
 
 
-
-
-
-
-    /*
-    public void onClick(View view) {
-        registrarCoche();
-    }
-
-
-    private void registrarCoche() {
-        //Creamos la conexión a la base de datos
-        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "bd_coche", null, 1);
-        //Abro la base de datos para poder editarla
-        SQLiteDatabase db=conn.getWritableDatabase();
-        //Android proporciona ContentValue que es un forma rápida de hacer los registros similar a como se utilizan los HashMap con una clave y valor asociados.
-        ContentValues values = new ContentValues();
-        //Introducimos en el put() una clave y un valor asociados a los campos de nuestra base de datos.
-        //values.put(Utilidades.CAMPO_MARCA, spMarca.get);
-        values.put(Utilidades.CAMPO_MODELO, etModelo.getText().toString());
-        values.put(Utilidades.CAMPO_KM, etKM.getText().toString());
-        values.put(Utilidades.CAMPO_ANIO, etAnio.getText().toString());
-        values.put(Utilidades.CAMPO_CC, etCC.getText().toString());
-        values.put(Utilidades.CAMPO_CV, etKM.getText().toString());
-        values.put(Utilidades.CAMPO_PRECIO, etPrecio.getText().toString());
-        values.put(Utilidades.CAMPO_VENDIDO, cbVendido.isSelected());
-
-    }
-
-     */
-
-
     public void onClickVolver(View view) {
         SQLiteDatabase db = conn.getWritableDatabase();
         String[] parametros = {String.valueOf(AdaptadorListado.getId())};
@@ -180,7 +154,13 @@ public class Ficha_Activity extends AppCompatActivity {
         values.put(Utilidades.CAMPO_CC, etCC.getText().toString());
         values.put(Utilidades.CAMPO_CV, etKM.getText().toString());
         values.put(Utilidades.CAMPO_PRECIO, etPrecio.getText().toString());
-        values.put(Utilidades.CAMPO_VENDIDO, cbVendido.isSelected());
+        if(cbVendido.isChecked()){
+            values.put(Utilidades.CAMPO_VENDIDO, "1");
+        }else{
+            values.put(Utilidades.CAMPO_VENDIDO, "0");
+        }
+
+
 
         //Este método se encarga de realizar el proceso de actualización
         db.update(Utilidades.TABLA_COCHE,values,Utilidades.CAMPO_ID+"=?",parametros);

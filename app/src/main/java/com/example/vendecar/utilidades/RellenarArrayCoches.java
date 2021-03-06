@@ -29,19 +29,20 @@ public class RellenarArrayCoches {
 
         String[] param = {"vendido"};
 
-        cursor = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_COCHE,null);
 
-        /*
 
+
+        System.out.println("El valor d evalore es:"+valor);
         if(valor.equals("0")){
+
             //Generamos el cursor
             cursor = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_COCHE,null);
         }else if (valor.equals("1")){
             //Generamos el cursor
-            cursor = db.query(Utilidades.TABLA_COCHE, param, "vendido=1", null, null, null, null);
+            cursor = db.rawQuery("SELECT * FROM "+Utilidades.TABLA_COCHE+" WHERE vendido=0",null);
         }
 
-         */
+
 
 
 
@@ -49,9 +50,9 @@ public class RellenarArrayCoches {
 
         //Con el resultado de la consulta hacemos el recorrido de los datos obtenidos.
         //Con este estamos diciendo que el primer registro lo mapee en los diferentes elementos de nuestro objeto.
+    if(cursor!=null) {
 
-
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
 
             do {
                 coche = new Coche();
@@ -72,6 +73,10 @@ public class RellenarArrayCoches {
 
         //Cerramos el cursor
         cursor.close();
+
+    }
+
+
 
         return listaCoche;
 
